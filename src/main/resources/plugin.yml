@@ -1,0 +1,12 @@
+name: DeathSwap
+main: dev.glassey.DeathSwap
+version: 1.0
+api-version: 1.16
+author: Weby
+depend: [Hyperverse]
+commands:
+  start:
+  startrandom:
+  accept:
+  decline:
+  cancel:
