@@ -32,22 +32,6 @@ public class DeathSwap extends JavaPlugin implements Listener {
         
         switch(label.toLowerCase())
         {
-            case "revoke":
-            {
-                AtomicInteger cpt = new AtomicInteger();
-                AtomicInteger cptadv = new AtomicInteger();
-                AtomicInteger cpttrue = new AtomicInteger();
-                Bukkit.advancementIterator().forEachRemaining(adv-> {
-                    cptadv.getAndIncrement();
-                    adv.getCriteria().forEach(crit -> {
-                        boolean res = p.getAdvancementProgress(adv).revokeCriteria(crit);
-                        if(res) cpttrue.getAndIncrement();
-                        p.sendMessage(adv.toString()+" -> "+crit);
-                        cpt.getAndIncrement();
-                    });
-                });
-                p.sendMessage("Revoked "+cpttrue+"/"+cpt+" advancement criterias for "+cptadv+" advancements.");
-            }
             case "cancel":
             {
                 Pair pair = Pair.getPair(p);
@@ -195,7 +179,7 @@ public class DeathSwap extends JavaPlugin implements Listener {
             proceed(pair, false); //Cancel the request
             return;
         }
-        pair.end(pair.getOther(p));
+        pair.end(null);
     }
     
     @EventHandler

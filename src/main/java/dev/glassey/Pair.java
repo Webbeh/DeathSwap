@@ -276,10 +276,7 @@ public class Pair {
             Path p = Objects.requireNonNull(this.world.getBukkitWorld()).getWorldFolder().toPath().toAbsolutePath();
             HyperWorld.WorldUnloadResult wur = this.world.unloadWorld(false);
             Hyperverse.getApi().getWorldManager().unregisterWorld(this.world);
-            Consumer<HyperWorld.WorldUnloadResult> cons = worldUnloadResult -> {
-                Bukkit.broadcastMessage("Accept: "+worldUnloadResult);
-                Bukkit.broadcastMessage("Desc: "+worldUnloadResult.getDescription());
-            };
+            Consumer<HyperWorld.WorldUnloadResult> cons = worldUnloadResult -> {};
             this.world.deleteWorld(cons);
             try {
                 deleteDirectoryStream(p);
@@ -291,6 +288,7 @@ public class Pair {
 
     }
     
+    //Delete folder
     private void deleteDirectoryStream(Path path) throws IOException
     {
         Files.walk(path)
